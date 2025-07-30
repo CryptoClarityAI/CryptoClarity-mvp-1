@@ -8,14 +8,14 @@ import { Button } from "@/components/ui/button";
 export default function CryptoClarityMVP() {
   const [projectName, setProjectName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<null | { summary: string; trustLevel: "nizek" | "visok" }>(null);
+  const [result, setResult] = useState(null);
 
   const checkProject = async () => {
     setLoading(true);
     setResult(null);
 
-    const mockAIResponse = (name: string) => {
-      if (!name) return { summary: "Ni vnosa.", trustLevel: "nizek" as const };
+    const mockAIResponse = (name) => {
+      if (!name) return { summary: "Ni vnosa.", trustLevel: "nizek" };
       const riskyWords = ["pepe", "elon", "moon", "shiba", "floki"];
       const isRisky = riskyWords.some((word) => name.toLowerCase().includes(word));
       return {
@@ -59,4 +59,3 @@ export default function CryptoClarityMVP() {
     </div>
   );
 }
-
